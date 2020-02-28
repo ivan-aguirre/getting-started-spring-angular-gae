@@ -1,0 +1,26 @@
+<h2>{{user.name}} Details</h2>
+
+<app-user-detail [user]="selectedUser"></app-user-detail>
+
+<h2>All users</h2>
+<ul class="users">
+  <li *ngFor="let user of users"
+      (click)="onSelect(user)"
+      [class.selected]="user === selectedUser">
+    <span class="badge">{{user.id}}</span> {{user.name}}
+  </li>
+</ul>
+
+
+<div *ngIf="!loggedUser">
+  <div>
+    With Google: <a href="/oauth2/authorization/google">click here</a>
+  </div>
+</div>
+
+<div *ngIf="loggedUser">
+  Logged in as: <span id="user">{{loggedUser}}</span>
+  <div>
+    <a href="/logout">Log out</a>
+  </div>
+</div>
